@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Library_API_Go",
-    "dateExported": "2024-04-08T18:26:59.709Z",
+    "dateExported": "2024-04-09T15:23:25.255Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -28,12 +28,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-04-08T18:21:17.356Z",
-            "modified": "2024-04-08T18:21:47.762Z",
+            "modified": "2024-04-09T15:23:06.681Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": 4,\n  \"title\": \"New Book\",\n  \"author\": \"New Author\",\n  \"year\": 2023\n}",
+                "raw": "{\n  \"id\": 1,\n  \"title\": \"Ikigai\",\n  \"author\": \"Francesc Miralles\",\n  \"year\": 2016\n}",
                 "form": []
             },
             "tests": []
@@ -47,7 +47,7 @@
             "method": "GET",
             "sortNum": 40000,
             "created": "2024-04-08T18:22:36.261Z",
-            "modified": "2024-04-08T18:23:07.113Z",
+            "modified": "2024-04-09T15:08:48.482Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -57,16 +57,16 @@
             "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
             "containerId": "",
             "name": "Update Book",
-            "url": "http://localhost:8080/books/4",
+            "url": "http://localhost:8080/books/3",
             "method": "PUT",
             "sortNum": 60000,
             "created": "2024-04-08T18:23:32.543Z",
-            "modified": "2024-04-08T18:24:33.714Z",
+            "modified": "2024-04-09T15:10:58.621Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": 1,\n  \"title\": \"Updated Book\",\n  \"author\": \"Updated Author\",\n  \"year\": 2024\n}\n",
+                "raw": "{\n  \"title\": \"Updated Ikigai\",\n  \"author\": \"Akhilesh\",\n  \"year\": 2024\n}\n",
                 "form": []
             },
             "tests": []
@@ -76,11 +76,11 @@
             "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
             "containerId": "",
             "name": "Delete Book",
-            "url": "http://localhost:8080/books/4",
+            "url": "http://localhost:8080/books/1",
             "method": "DELETE",
             "sortNum": 80000,
             "created": "2024-04-08T18:24:55.938Z",
-            "modified": "2024-04-08T18:25:29.694Z",
+            "modified": "2024-04-09T15:11:36.711Z",
             "headers": [],
             "params": [],
             "tests": []
