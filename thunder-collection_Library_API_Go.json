@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Library_API_Go",
+    "dateExported": "2024-04-08T18:26:59.709Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "61cd5805-483c-4c6e-8761-d7c8896f567d",
+            "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
+            "containerId": "",
+            "name": "Get All books",
+            "url": "http://localhost:8080/books",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-08T18:20:06.399Z",
+            "modified": "2024-04-08T18:22:08.987Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "26af347c-b6d7-4480-9d07-f4ed5ab3a427",
+            "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
+            "containerId": "",
+            "name": "Add Book",
+            "url": "http://localhost:8080/books",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-04-08T18:21:17.356Z",
+            "modified": "2024-04-08T18:21:47.762Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 4,\n  \"title\": \"New Book\",\n  \"author\": \"New Author\",\n  \"year\": 2023\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bb753779-d536-4d36-9aa2-79389e0b2c82",
+            "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
+            "containerId": "",
+            "name": "Get Book by ID",
+            "url": "http://localhost:8080/books/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-08T18:22:36.261Z",
+            "modified": "2024-04-08T18:23:07.113Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c35407b5-b2a0-4d1d-b5e4-b6b4ae7ef95f",
+            "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
+            "containerId": "",
+            "name": "Update Book",
+            "url": "http://localhost:8080/books/4",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-04-08T18:23:32.543Z",
+            "modified": "2024-04-08T18:24:33.714Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 1,\n  \"title\": \"Updated Book\",\n  \"author\": \"Updated Author\",\n  \"year\": 2024\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "36085b3e-36fc-46cc-920d-9fcd69ae1b38",
+            "colId": "33f82729-37ed-4e71-b716-6d3ea51e07ca",
+            "containerId": "",
+            "name": "Delete Book",
+            "url": "http://localhost:8080/books/4",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-04-08T18:24:55.938Z",
+            "modified": "2024-04-08T18:25:29.694Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
