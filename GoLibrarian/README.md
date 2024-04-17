@@ -1,6 +1,76 @@
 # GoLibrarian
 
-GoLibraryAPI is a simple RESTful API for managing a library system, implemented in Go.
+1. To enhance understanding of Go programming language in the context of database integration.
+
+2. To learn how to implement CRUD operations using PostgreSQL in Go.
+
+3. To migrate from in-memory data storage to a persistent database.
+
+4. To refine API documentation to include database integration aspects.
+
+
+
+# Setting up PostgreSQL for Go Library System
+
+This guide will help set up PostgreSQL for use with the Go Library System. PostgreSQL is a powerful open-source relational database management system that provides robust features and excellent performance.
+
+## Installation
+
+To install PostgreSQL on your system, use the following command:
+
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+
+## Starting PostgreSQL Service
+
+Once PostgreSQL is installed, you can start the PostgreSQL service using the following command:
+
+```bash
+sudo service postgresql start
+```
+
+## Checking Service Status
+
+To check the status of the PostgreSQL service, use:
+
+```bash
+sudo service postgresql status
+```
+
+## Enabling Automatic Startup
+
+To ensure that PostgreSQL starts automatically on system boot, enable it with:
+
+```bash
+sudo systemctl enable postgresql
+```
+
+```bash
+createdb library_system
+```
+
+This command will create a new PostgreSQL database named `library_system`.
+
+```bash
+psql -U akhilesh -d library_system -h localhost
+```
+
+This command will connect to the `library_system` database using the user `akhilesh` and the host `localhost`.
+
+```sql
+-- Create a table to store information about books
+CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    published_date DATE,
+    isbn TEXT UNIQUE
+);
+```
+
+This SQL script will create a table named `books` with columns `id`, `title`, `author`, `published_date`, and `isbn`. The `id` column is of type SERIAL and serves as the primary key. The `title` and `author` columns are of type TEXT and cannot be NULL. The `published_date` column is of type DATE. The `isbn` column is of type TEXT with a UNIQUE constraint to ensure each ISBN is unique in the table.
+
 
 ## Setup
 
@@ -15,166 +85,59 @@ GoLibraryAPI is a simple RESTful API for managing a library system, implemented 
 3. Install dependencies:
    ```bash
    go get -u github.com/gorilla/mux
+   go get github.com/lib/pq
 
 4. Run the Server:
    To run the GoLibraryAPI server, execute the following command:
    ```bash
    go run main.go
 
-## Test the API
-
-Use Postman to test the API endpoints. Here are the available endpoints:
-
 ## Endpoint Descriptions:
 
 Base URL: http://localhost:8080
 
-### Get All Books
+The file contains a collection of HTTP requests designed to interact with a service that manages books:
 
-- **Method:** GET
-- **URL:** `/books`
-- **Description:** Retrieves a list of all books in the library.
+1. **Get All Books**:
+   - Method: GET
+   - URL: http://localhost:8080/books
 
-### Add Book
+2. **Add Book**:
+   - Method: POST
+   - URL: http://localhost:8080/books
+   - Body:
+     ```json
+     {
+       "id": 1,
+       "title": "Ikigai",
+       "author": "Francesc Miralles",
+       "published_date": "2016-01-01",
+       "isbn": "453666"
+     }
+     ```
 
-- **Method:** POST
-- **URL:** `/books`
-- **Description:** Adds a new book to the library.
+3. **Get Book by ID**:
+   - Method: GET
+   - URL: http://localhost:8080/books/1
 
-### Get Book by ID
+4. **Update Book**:
+   - Method: PUT
+   - URL: http://localhost:8080/books/1
+   - Body:
+     ```json
+     {
+       "title": "Updated Ikigai",
+       "author": "Akhilesh Sahu",
+       "published_date": "2016-01-01",
+       "isbn": "453667"
+     }
+     ```
 
-- **Method:** GET
-- **URL:** `/books/{id}`
-- **Description:** Retrieves details of a specific book by its ID.
+5. **Delete Book**:
+   - Method: DELETE
+   - URL: http://localhost:8080/books/1
 
-### Update Book
-
-- **Method:** PUT
-- **URL:** `/books/{id}`
-- **Description:** Updates details of a specific book by its ID.
-
-### Delete Book
-
-- **Method:** DELETE
-- **URL:** `/books/{id}`
-- **Description:** Deletes a specific book from the library by its ID.
-
-
-
-
-
-
-
-## Request and Response Formats
-
-
-This section provides detailed documentation for the expected request and response formats for each endpoint in the Library API.
-
-## Get All Books
-
-### Request Format
-
-- **Method:** GET
-- **URL:** `http://localhost:8080/books`
-
-### Response Format
-
-- **Description:** Retrieves a list of all books in the library.
-- **Response Body Format:** Array of JSON objects representing books. Each book object has the following structure:
-  ```json
-  [
-  {
-    "id": "integer",
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  } 
-  ]
-
-## Add Book
-
-### Request Format
-
-- **Method:** POST
-- **URL:** `http://localhost:8080/books`
-- **Request Body Format:** JSON object representing the new book. The object should have the following structure:
-  ```json
-  { 
-    "id": "integer",
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  }
-  
-### Response Format
-
-- **Description:** Adds a new book to the library.
-- **Response Body Format:** JSON object representing the newly added book. The object has the following structure:
-  ```json
-  {
-    "id": "integer",
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  }
-
-## Get Book by ID
-
-### Request Format
-
-- **Method:** GET
-- **URL:** `http://localhost:8080/books/{id}`
-  - Replace `{id}` with the ID of the book to retrieve.
-
-### Response Format
-
-- **Description:** Retrieves details of a specific book by its ID.
-- **Response Body Format:** JSON object representing the book. The object has the following structure:
-  ```json
-  {
-    "id": "integer",
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  }
-## Update Book
-
-### Request Format
-
-- **Method:** PUT
-- **URL:** `http://localhost:8080/books/{id}`
-  - Replace `{id}` with the ID of the book to update.
-- **Request Body Format:** JSON object representing the updated book. The object should have the following structure:
-  ```json
-  {
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  }
-### Response Format
-
-- **Description:** Updates details of a specific book by its ID.
-- **Response Body Format:** JSON object representing the updated book. The object has the following structure:
-  ```json
-  {
-    "id": "integer",
-    "title": "string",
-    "author": "string",
-    "year": "integer"
-  }
-## Delete Book
-
-### Request Format
-
-- **Method:** DELETE
-- **URL:** `http://localhost:8080/books/{id}`
-  - Replace `{id}` with the ID of the book to delete.
-
-### Response Format
-
-- **Description:** Deletes a specific book from the library by its ID.
-- **Response Body Format:** This endpoint does not return a response body. The HTTP response status indicates the outcome of the deletion operation.
-
+This configuration file facilitates CRUD (Create, Read, Update, Delete) operations on a collection of books through various HTTP requests. Each request is uniquely named and includes the method, URL, and, in the case of POST and PUT requests, a request body.
 
 ## Status Codes
 
@@ -204,7 +167,7 @@ These status codes help to communicate the outcome of the request to the client,
 ### Learnings:
 - **Go Fundamentals:** Mastered basics like syntax, data types, and control structures.
 - **REST Principles:** Understood URL design, HTTP methods, and status codes.
-- **CRUD Operations:** Implemented Create, Read, Update, Delete operations efficiently.
+- **CRUD Operations:** Implemented Create, Read, Update, Delete operations efficiently using DB.
 - **Error Handling:** Learned to manage errors effectively for a robust API.
 - **Documentation:** Created comprehensive documentation for clear usage.
 - **Testing:** Provided Postman collection for easy API testing.
@@ -215,4 +178,4 @@ These status codes help to communicate the outcome of the request to the client,
 - **Project Management:** Developed planning and organization skills.
 - **Continuous Learning:** Kept learning and improving throughout the project.
 
-In summary, the project was a valuable learning experience, equipping us with essential skills and insights into Go programming and RESTful API development.
+In conclusion, the provided JSON represents a configuration file for a REST API client, Thunder Client. This file outlines various HTTP requests for interacting with a service managing books. The requests include operations such as retrieving all books, adding a new book, fetching a book by its ID, updating a book, and deleting a book. Each request specifies the HTTP method, URL, and, in the case of POST and PUT requests, a JSON payload containing book details. This configuration file serves as a comprehensive setup for testing and validating endpoints in a RESTful API that deals with book management.
